@@ -1,0 +1,25 @@
+# Doc stats, as an AutoDoc plugin. AutoDoc's Plugins › Add from a git URL… clones this repository,
+# asks before it runs anything, then runs [install] build here and starts `command` from this
+# directory.
+name     = "doc-stats"
+title    = "Doc stats"
+kind     = "dialog"
+protocol = 2                         # a card and the feed are protocol 2
+command  = ["./bin/autodoc-doc-stats"]
+
+[dialog]
+modal      = false                   # a card beside the page: it takes the keys only when focused
+width      = 34
+height     = 24
+placements = ["right", "left"]       # right first; Manage plugins › Place
+
+[feed]
+document = true                      # the open note, as it is edited
+
+[[commands]]
+id    = "toggle"                     # AutoDoc's own: it opens the card, focused, or closes it
+title = "Show / hide the stats"
+key   = "s"                          # SPC p s
+
+[install]
+build = ["go", "build", "-trimpath", "-o", "bin/autodoc-doc-stats", "."]
