@@ -155,8 +155,10 @@ func words(l string) []string {
 	return out
 }
 
-func wordRune(r rune) bool { return unicode.IsLetter(r) || unicode.IsNumber(r) || unicode.Is(unicode.Mn, r) }
-func joiner(r rune) bool   { return r == '\'' || r == '’' || r == '-' }
+func wordRune(r rune) bool {
+	return unicode.IsLetter(r) || unicode.IsNumber(r) || unicode.Is(unicode.Mn, r)
+}
+func joiner(r rune) bool { return r == '\'' || r == '’' || r == '-' }
 
 // frequent says w may be among the most frequent words: two characters or more, a letter among
 // them, and not a stop word.
